@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional: Define global styles or custom base styles here */
+body {
+  /* Example: Set a default font if not using Tailwind's font families directly in layout */
+  /* font-family: 'Vazirmatn', sans-serif; */ /* Make sure font is imported if used like this */
+  @apply bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark;
+  direction: rtl; /* Default direction to RTL for Persian UI */
+}
+
+/* Example: Custom scrollbar (optional) */
+/* ::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} */
+
+/* Add other global styles or overrides here */
+h1, h2, h3, h4, h5, h6 {
+  /* Example: common heading styles */
+  /* @apply font-bold; */
+}
