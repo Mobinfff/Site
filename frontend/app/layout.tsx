@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google'; // Default font, can be replaced
 import localFont from 'next/font/local' // For local fonts like Vazirmatn
-import '../styles/globals.css'; // Import global styles (including Tailwind)
-import Navbar from '@/components/layout/Navbar'; // Assuming @ is configured for src or root
+import '../styles/globals.css';
+import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-// import ThemeProvider from '@/contexts/ThemeProvider'; // Example for a theme provider context
+import { AuthProvider } from '@/contexts/AuthContext'; // Import AuthProvider
+// import ThemeProvider from '@/contexts/ThemeProvider';
 
 // Configure a local font (e.g., Vazirmatn)
 // Download Vazirmatn fonts and place them in `public/fonts` or `app/fonts`
@@ -77,17 +78,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fa" dir="rtl" className={vazirmatn.variable}> {/* Set lang, dir, and font variable */}
-      <body className="font-sans antialiased"> {/* Use font-sans which can be configured in tailwind.config.ts */}
-        {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem> */}
-          <div className="flex flex-col min-h-screen">
-            <Navbar />
-            <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-              {children}
-            </main>
-            <Footer />
-          </div>
-        {/* </ThemeProvider> */}
+    <html lang="fa" dir="rtl" className={vazirmatn.variable}>
+      <body className="font-sans antialiased">
+        <AuthProvider> {/* Wrap children with AuthProvider */}
+          {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem> */}
+            <div className="flex flex-col min-h-screen">
+              <Navbar />
+              <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                {children}
+              </main>
+              <Footer />
+            </div>
+          {/* </ThemeProvider> */}
+        </AuthProvider>
       </body>
     </html>
   );
