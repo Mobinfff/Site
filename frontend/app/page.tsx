@@ -1,32 +1,14 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
-// import { ClubCard } from '@/components/common/ClubCard'; // Assuming a ClubCard component
+import { ClubCard } from '@/components/common/ClubCard'; // Import the actual ClubCard
 
 // Placeholder data for featured clubs
+// This should ideally match the ClubSummary type or the type expected by ClubCard
 const featuredClubs = [
   { id: '1', name: 'باشگاه بدنسازی انرژی', location: 'تهران، ولیعصر', image: 'https://via.placeholder.com/300x200?text=Energy+Gym', rating: 4.5, sport_types: ['بدنسازی', 'TRX'] },
   { id: '2', name: 'باشگاه یوگا آرامش', location: 'اصفهان، مرداویج', image: 'https://via.placeholder.com/300x200?text=Aramesh+Yoga', rating: 4.8, sport_types: ['یوگا', 'پیلاتس'] },
-  { id: '3', name: 'مجموعه ورزشی انقلاب', location: 'تهران، انقلاب', image: 'https://via.placeholder.com/300x200?text=Enghelab+Complex', rating: 4.2, sport_types: ['بدنسازی', 'شنا', 'فوتسال'] },
+  { id: '3', name: 'مجموعه ورزشی انقلاب', address: 'تهران، انقلاب', images: [{image_url:'https://via.placeholder.com/300x200?text=Enghelab+Complex'}], sport_types: [{id:1, name:'بدنسازی'}, {id:2, name:'شنا'}] },
 ];
-
-// A simple ClubCard component for now
-const ClubCard = ({ club }: { club: typeof featuredClubs[0] }) => (
-  <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-    <img src={club.image} alt={club.name} className="w-full h-48 object-cover" />
-    <div className="p-4">
-      <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-1">{club.name}</h3>
-      <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{club.location}</p>
-      <div className="flex items-center mb-2">
-        {/* Placeholder for rating stars */}
-        <span className="text-yellow-500">⭐ {club.rating}</span>
-      </div>
-      <div className="text-xs text-gray-500 dark:text-gray-300">
-        {club.sport_types.join('، ')}
-      </div>
-      <Button href={`/clubs/${club.id}`} variant="outline" className="w-full mt-4 text-sm py-2">مشاهده جزئیات</Button>
-    </div>
-  </div>
-);
 
 
 export default function HomePage() {
