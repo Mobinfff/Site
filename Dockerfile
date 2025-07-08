@@ -1,20 +1,17 @@
-# Dockerfile
+# Use Node.js base image
 FROM node:18
 
-# ساخت یک پوشه کاری درون کانتینر
+# Create app directory inside container
 WORKDIR /app
 
-# کپی کردن پوشه backend به کانتینر
+# Copy backend folder
 COPY backend ./backend
 
-# تغییر مسیر به backend
+# Set working directory to backend
 WORKDIR /app/backend
 
-# نصب وابستگی‌ها
+# Install dependencies
 RUN npm install
 
-# کامپایل پروژه (در صورت استفاده از TypeScript)
-RUN npm run build
-
-# تعیین دستور اجرای نهایی
-CMD ["npm", "run", "start:prod"]
+# Run app in dev mode (no build step needed)
+CMD ["npm", "run", "start:dev"]
